@@ -1,0 +1,41 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.nfc_flutter_proyect"
+    compileSdk = flutter.compileSdkVersion  // Usa el valor de Flutter para la versión de SDK
+    ndkVersion = flutter.ndkVersion  // Asegúrate de tener esta versión correctamente definida
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.nfc_flutter_proyect"
+        minSdk = 26  // Asegúrate de que sea 26 o superior para compatibilidad con biometría
+        targetSdk = flutter.targetSdkVersion  // Usa el valor de Flutter para el targetSdk
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."  // Ruta al proyecto Flutter
+}
